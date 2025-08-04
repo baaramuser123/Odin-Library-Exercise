@@ -20,6 +20,10 @@ form>* {
     font-size: 32px;
 }
 
+form>p>*:invalid{
+  border: 2px solid red;
+}
+
 form>p>* {
     width:100%;
 

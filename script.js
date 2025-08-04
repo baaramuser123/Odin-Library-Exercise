@@ -8,6 +8,21 @@ let form = document.querySelector("form");
 let allButtons = document.querySelector("table");
 allButtons.addEventListener("click", clickHandler);
 
+//form validation
+let pagesInput = document.getElementById("pages");
+pagesInput.setCustomValidity("Please enter a positive number!");
+pagesInput.addEventListener("input", (event)=>{
+    // if(!pagesInput.checkValidity()){
+    //     pagesInput.setCustomValidity("hi");
+    // }
+    console.log("input");
+    if(pagesInput.value !== ""){
+        pagesInput.setCustomValidity("");
+    }
+    else{
+        pagesInput.setCustomValidity("Please enter a positive number!");
+    }
+});
 
 
 //
@@ -146,6 +161,10 @@ function closeSidebar(){
 
 function overrideSubmit(event){
     event.preventDefault();
+    if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+    }
     // The below work to provide values, but wanted a better array of values with
     // fewer lines of code
     // console.log(event.target.form.title.value);
